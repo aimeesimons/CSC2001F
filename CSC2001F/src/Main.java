@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
@@ -15,14 +16,46 @@ public class Main {
             switch (choice) {
                 case 1:
                     System.out.println("Enter the account name:");
+                    String AccountName = input.next();
+                    User comp_User = new User(AccountName);
+                    comp_User = users.find(comp_User).data;
+                    if (comp_User == null) {
+                        System.out.println("Account does not exist");
+                    } else {
+                        System.out.println("The profile description is: " + comp_User.Description);
+                    }
 
-                    System.out.println("The profile description is: ");
                     break;
-
                 case 2:
+                    System.out.println("Listing all the accounts");
+                    users.postOrder();
+                    break;
                 case 3:
+                    System.out.println("Enter an account name:");
+                    String Name = input.next();
+                    System.out.println("Privide a profile description:");
+                    String description = input.nextLine();
+                    User newAccount = new User(Name, description);
+                    users.insert(newAccount);
+                    System.out.println("Account has been created!");
+                    break;
                 case 4:
+                    System.out.println("Enter the account name which you would like to delete:");
+                    String del = input.next();
+                    User temp = new User(del);
+                    users.delete(temp);
+                    System.out.println("Account has been deleted");
+                    break;
                 case 5:
+                    System.out.println("Enter an account name:");
+                    String postName = input.next();
+                    User temp1 = new User(postName);
+                    temp1 = users.find(temp1).data;
+                    Collections.reverse(temp1.posts);
+                    for (int i = 0; i < temp1.posts.size(); i++) {
+                        System.out.println(temp1.posts.get(i).toString());
+                    }
+                    break;
                 case 6:
                 case 7:
             }
