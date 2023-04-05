@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        BinaryTree<User> users = new BinaryTree<User>();
         Scanner input = new Scanner(System.in);
         System.out.println("Choose an action from the menu:");
         System.out.println(
@@ -27,4 +28,5 @@ public class Main {
         }
         System.out.println("Bye!");
     }
+
 }
