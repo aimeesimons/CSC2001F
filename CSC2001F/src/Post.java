@@ -9,6 +9,12 @@ public class Post {
         this.numLikes=0;
     }
 
+    public Post(String title, String nameOfFile){
+        this.title = title;
+        this.nameOfFile=nameOfFile;
+        this.numLikes=0;
+    }
+
     public Post(String title, String nameOfFile, int numLikes){
         this.title = title;
         this.nameOfFile=nameOfFile;
