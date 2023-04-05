@@ -1,8 +1,9 @@
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
-        BinaryTree<User> users = new BinaryTree<User>();
+        BinarySearchTree users = new BinarySearchTree();
         Scanner input = new Scanner(System.in);
         System.out.println("Choose an action from the menu:");
         System.out.println(
@@ -13,6 +14,11 @@ public class Main {
         while (choice != 8) {
             switch (choice) {
                 case 1:
+                    System.out.println("Enter the account name:");
+
+                    System.out.println("The profile description is: ");
+                    break;
+
                 case 2:
                 case 3:
                 case 4:
