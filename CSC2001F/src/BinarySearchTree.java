@@ -11,7 +11,7 @@ public class BinarySearchTree extends BinaryTree {
    }
 
    public void insert(User d, BinaryTreeNode node) {
-      if (d.compareTo(node.data) <= 0) {
+      if (d.compareTo(node.data.account) <= 0) {
          if (node.left == null)
             node.left = new BinaryTreeNode(d, null, null);
          else

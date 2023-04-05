@@ -4,7 +4,6 @@
 
 public class BinaryTree {
    BinaryTreeNode root;
-   User node;
 
    public BinaryTree() {
       root = null;
@@ -33,7 +32,7 @@ public class BinaryTree {
    }
 
    public void visit(BinaryTreeNode node) {
-      System.out.println(node.data);
+      System.out.println(node.data.toString());
    }
 
    public void preOrder() {
