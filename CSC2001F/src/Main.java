@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Collections;
 import java.util.Scanner;
 
@@ -48,8 +50,8 @@ public class Main {
                     break;
                 case 5:
                     System.out.println("Enter an account name:");
-                    String postName = input.next();
-                    User temp1 = new User(postName);
+                    String postsName = input.next();
+                    User temp1 = new User(postsName);
                     temp1 = users.find(temp1).data;
                     Collections.reverse(temp1.posts);
                     for (int i = 0; i < temp1.posts.size(); i++) {
@@ -57,7 +59,38 @@ public class Main {
                     }
                     break;
                 case 6:
+                    System.out.println("Enter an account name:");
+                    String postName = input.next();
+                    User temp2 = new User(postName);
+                    temp2 = users.find(temp2).data;
+                    System.out.println("Would you like to post a video? y/n");
+                    String ans = input.next().toUpperCase();
+                    if (ans == "Y") {
+                        System.out.println("Enter the video file name");
+                        String vid = input.next();
+                        System.out.println("Enter a Title");
+                        String descrip = input.nextLine();
+                        temp2.posts.add(new Post(descrip, vid));
+                    } else {
+                        System.out.println("Enter a comment");
+                        String com = input.nextLine();
+                        temp2.posts.add(new Post(com));
+                    }
+
                 case 7:
+                    try {
+                        File myObj = new File(
+                                "C:/Users/Aimee Simons/Desktop/2023/Lectures/Semester 1/CSC2001F/Assignments/CSC2001F_A4/CSC2001F/dataset.txt");
+                        Scanner myReader = new Scanner(myObj);
+                        while (myReader.hasNextLine()) {
+                            String data = myReader.nextLine();
+                            System.out.println(data);
+                        }
+                        myReader.close();
+                    } catch (FileNotFoundException e) {
+                        System.out.println("An error occurred.");
+                        e.printStackTrace();
+                    }
             }
             System.out.println("Choose an action from the menu:");
             System.out.println(
