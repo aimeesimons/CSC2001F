@@ -91,6 +91,7 @@ public class Main {
                     System.out.println("Enter an account name:");
                     String Name = input.next();
                     System.out.println("Privide a profile description:");
+                    input.nextLine();
                     String description = input.nextLine();
                     User newAccount = new User(Name, description);
                     users.insert(newAccount);
@@ -114,6 +115,7 @@ public class Main {
                     }
                     break;
                 case 6:
+                    input.nextLine();
                     System.out.println("Enter an account name:");
                     String postName = input.next();
                     User temp2 = new User(postName);
@@ -124,10 +126,12 @@ public class Main {
                         System.out.println("Enter the video file name");
                         String vid = input.next();
                         System.out.println("Enter a Title");
+                        input.nextLine();
                         String descrip = input.nextLine();
                         temp2.posts.add(new Post(descrip, vid));
                     } else {
                         System.out.println("Enter a comment");
+                        input.nextLine();
                         String com = input.nextLine();
                         temp2.posts.add(new Post(com));
                     }
