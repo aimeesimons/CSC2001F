@@ -1,13 +1,43 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.file.attribute.UserDefinedFileAttributeView;
 import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
+
         BinarySearchTree users = new BinarySearchTree();
         Scanner input = new Scanner(System.in);
+        User aimee = new User("aimee", "small girl");
+
+        users.insert(aimee);
+        users.insert(new User("erin", "tall girl"));
+        users.insert(new User("maxine", "cute girl"));
+
+        // System.out.println(users.root.data);
+        // }
+        // users.inOrder();
+        // BinaryTreeNode search = users.find(new User("aimee"));
+        // if (search == null) {
+        // System.out.println("Does not exist");
+
+        // } else {
+        // System.out.println("The profile description is : " +
+        // search.data.Description);
+        // }
+
+        // System.out.println("Enter the account name:");
+        // String AccountName = input.next();
+        // User comp_User = new User(AccountName);
+        // User temp_User = users.find(comp_User).data;
+        // String deString = temp_User.Description;
+        // if (comp_User == null) {
+        // System.out.println("Account does not exist");
+        // } else {
+        // System.out.println("The profile description is: " + comp_User.Description);
+
         System.out.println("Choose an action from the menu:");
         System.out.println(
                 "1. Find the profile description for a given account\n2. List all accounts\n3. Create an account\n4. Delete an account\n5. Display all posts for a single account\n6. Add a new post for an account\n7. Load a file of actions from disk and process this\n8. Quit");
@@ -18,16 +48,19 @@ public class Main {
             switch (choice) {
                 case 1:
                     System.out.println("Enter the account name:");
-                    String AccountName = input.next();
-                    User comp_User = new User(AccountName);
-                    comp_User = users.find(comp_User).data;
-                    if (comp_User == null) {
-                        System.out.println("Account does not exist");
+                    User tUser = new User(input.next());
+                    BinaryTreeNode search = users.find(tUser);
+                    if (search == null) {
+                        System.out.println("Does not exist");
+
                     } else {
-                        System.out.println("The profile description is: " + comp_User.Description);
+                        System.out.println("The profile description is: " +
+                                search.data.Description);
                     }
+                    System.out.println(search);
 
                     break;
+
                 case 2:
                     System.out.println("Listing all the accounts");
                     users.postOrder();
@@ -76,6 +109,7 @@ public class Main {
                         String com = input.nextLine();
                         temp2.posts.add(new Post(com));
                     }
+                    break;
 
                 case 7:
                     try {
