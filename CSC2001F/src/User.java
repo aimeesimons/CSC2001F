@@ -15,6 +15,9 @@ public class User {
         this.account = account;
     }
 
+    public User() {
+    }
+
     public String getAccount() {
         return this.account;
     }
@@ -43,17 +46,12 @@ public class User {
 
     }
 
-    public int compareTo(User user) {
-        if (this.account == user.account) {
-            return 0;
-
-        }
-        return -1;
-
-    }
-
     public String toString() {
         return this.getAccount();
+    }
+
+    public void setUser(String acString) {
+        this.account = acString;
     }
 
 }

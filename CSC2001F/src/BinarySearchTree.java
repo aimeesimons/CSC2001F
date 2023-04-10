@@ -32,9 +32,9 @@ public class BinarySearchTree extends BinaryTree {
    }
 
    public BinaryTreeNode find(User d, BinaryTreeNode node) {
-      if (d.compareTo(node.data) == 0)
+      if (d.compareTo(node.data.account) == 0)
          return node;
-      else if (d.compareTo(node.data) < 0)
+      else if (d.compareTo(node.data.account) < 0)
          return (node.left == null) ? null : find(d, node.left);
       else
          return (node.right == null) ? null : find(d, node.right);
@@ -47,9 +47,9 @@ public class BinarySearchTree extends BinaryTree {
    public BinaryTreeNode delete(User d, BinaryTreeNode node) {
       if (node == null)
          return null;
-      if (d.compareTo(node.data) < 0)
+      if (d.compareTo(node.data.account) < 0)
          node.left = delete(d, node.left);
-      else if (d.compareTo(node.data) > 0)
+      else if (d.compareTo(node.data.account) > 0)
          node.right = delete(d, node.right);
       else if (node.left != null && node.right != null) {
          node.data = findMin(node.right).data;
