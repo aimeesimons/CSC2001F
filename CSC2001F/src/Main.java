@@ -1,7 +1,12 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.nio.file.attribute.UserDefinedFileAttributeView;
 import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -22,8 +27,6 @@ public class Main {
 
         // System.out.println(users.root.data);
         // }
-        users.inOrder();
-        System.out.println(users.find(aimee));
 
         // input.nextLine();
         // System.out.println("Enter the account name:");
@@ -84,7 +87,7 @@ public class Main {
 
                 case 2:
                     System.out.println("Listing all the accounts");
-                    users.postOrder();
+                    users.inOrder();
                     break;
                 case 3:
                     input.nextLine();
@@ -138,19 +141,11 @@ public class Main {
                     break;
 
                 case 7:
-                    try {
-                        File myObj = new File(
-                                "C:/Users/Aimee Simons/Desktop/2023/Lectures/Semester/CSC2001F/Assignments/CSC2001F_A4/CSC2001F/dataset.txt");
-                        Scanner myReader = new Scanner(myObj);
-                        while (myReader.hasNextLine()) {
-                            String data = myReader.nextLine();
-                            System.out.println(data);
-                        }
-                        myReader.close();
-                    } catch (FileNotFoundException e) {
-                        System.out.println("An error occurred.");
-                        e.printStackTrace();
-                    }
+                    String route = "C:/Users/Aimee Simons/Desktop/2023/Lectures/Semester 1/CSC2001F/Assignments/CSC2001F_A4/CSC2001F/dataset.txt";
+                    String li = Line(route);
+
+                    System.out.println(li);
+
             }
             System.out.println("Choose an action from the menu:");
             System.out.println(
@@ -159,6 +154,18 @@ public class Main {
             choice = input.nextInt();
         }
         System.out.println("Bye!");
+    }
+
+    private static String Line(String route) {
+        List<String> l;
+        try {
+            l = Files.readAllLines(Paths.get(route));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        Random random = new Random();
+        return l.get(random.nextInt(l.size()));
     }
 
 }
