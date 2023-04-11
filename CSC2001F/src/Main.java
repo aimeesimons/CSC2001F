@@ -93,12 +93,17 @@ public class Main {
                     input.nextLine();
                     System.out.println("Enter an account name:");
                     String Name = input.next();
-                    System.out.println("Privide a profile description:");
-                    input.nextLine();
-                    String description = input.nextLine();
-                    User newAccount = new User(Name, description);
-                    users.insert(newAccount);
-                    System.out.println("Account has been created!");
+                    BinaryTreeNode check = users.find(new User(Name));
+                    if (check == null) {
+                        System.out.println("Privide a profile description:");
+                        input.nextLine();
+                        String description = input.nextLine();
+                        User newAccount = new User(Name, description);
+                        users.insert(newAccount);
+                        System.out.println("Account has been created!");
+                    } else {
+                        System.out.println("Username already exists. Please select a different one.");
+                    }
                     break;
                 case 4:
                     System.out.println("Enter the account name which you would like to delete:");
