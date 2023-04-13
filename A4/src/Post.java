@@ -17,7 +17,7 @@ public class Post {
 
     public Post(String title) {
         this.title = title;
-        this.nameOfFile = "";
+        this.nameOfFile = "N/A";
         this.numLikes = 0;
     }
 
@@ -40,9 +40,12 @@ public class Post {
     }
 
     public String toString() {
-        String x = "Title: " + this.title + "\n";
-        x = x + "Video: " + this.nameOfFile + "\n";
-        x = x + "Number of Likes: " + this.numLikes;
+        String bunny = "(\\(\\\n";
+        bunny = bunny + "\t( . .)\n";
+        bunny = bunny + "\to_(\")(\")\t|\n\t\t\t";
+        String x = "|Comment: " + this.title + "\n";
+        x = x + "\t|" + bunny + "|Video: " + this.nameOfFile + "|\n";
+        x = x + "\t|" + "Number of Likes: " + this.numLikes + "|";
 
         return x;
     }

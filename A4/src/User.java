@@ -15,9 +15,6 @@ public class User {
         this.account = account;
     }
 
-    public User() {
-    }
-
     public String getAccount() {
         return this.account;
     }

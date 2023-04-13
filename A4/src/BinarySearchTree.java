@@ -78,4 +78,10 @@ public class BinarySearchTree extends BinaryTree {
          return node.right;
    }
 
+   public BinaryTreeNode UserExists(BinarySearchTree tree, String UserName) {
+
+      return tree.find(new User(UserName));
+
+   }
+
 }
