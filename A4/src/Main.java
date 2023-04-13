@@ -111,8 +111,12 @@ public class Main {
                 case 7:
                     String route = "C:/Users/Aimee Simons/Desktop/2023/Lectures/Semester 1/CSC2001F/Assignments/CSC2001F_A4/CSC2001F/dataset.txt";
                     String li = Line(route);
+                    int space = li.indexOf(" ");
+                    System.out.println(li.substring(0, space));
+                    // if (li.substring(0, space - 1).toUpperCase() == "ADD") {
+                    // String newString = li.substring(space);
 
-                    System.out.println(li);
+                    // }
 
             }
             System.out.println("Choose an action from the menu:");

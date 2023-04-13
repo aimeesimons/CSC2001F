@@ -1,9 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Main" type="Java Scratch" nameIsGenerated="true">
-    <option name="MAIN_CLASS_NAME" value="Main" />
-    <module name="CSC2001F" />
-    <method v="2">
-      <option name="Make" enabled="true" />
-    </method>
-  </configuration>
-</component>
