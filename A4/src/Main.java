@@ -138,7 +138,7 @@ public class Main {
                     String newString = System.getProperty("user.dir").replaceAll("\\\\", "/") + "/A4/dataset.txt";
                     System.out.println(newString);
                     String li = Line(
-                            "C:/Users/Aimee Simons/Desktop/2023/Lectures/Semester 1/CSC2001F/Assignments/CSC2001F_A4/A4/dataset.txt");
+                            "dataset.txt");
                     int space = li.indexOf(" ");
                     if (li.substring(0, space).toUpperCase().equals("ADD")) {
                         String newSentence = li.substring(space + 1);
