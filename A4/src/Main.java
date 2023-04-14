@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -134,14 +135,58 @@ public class Main {
                     break;
 
                 case 7:
-                    String route = "C:/Users/Aimee Simons/Desktop/2023/Lectures/Semester 1/CSC2001F/Assignments/CSC2001F_A4/CSC2001F/dataset.txt";
-                    String li = Line(route);
+                    String newString = System.getProperty("user.dir").replaceAll("\\\\", "/") + "/A4/dataset.txt";
+                    System.out.println(newString);
+                    String li = Line(
+                            "C:/Users/Aimee Simons/Desktop/2023/Lectures/Semester 1/CSC2001F/Assignments/CSC2001F_A4/A4/dataset.txt");
                     int space = li.indexOf(" ");
-                    System.out.println(li.substring(0, space));
-                    // if (li.substring(0, space - 1).toUpperCase() == "ADD") {
-                    // String newString = li.substring(space);
+                    if (li.substring(0, space).toUpperCase().equals("ADD")) {
+                        String newSentence = li.substring(space + 1);
+                        space = newSentence.indexOf(" ");
+                        String username = newSentence.substring(0, space);
+                        newSentence = newSentence.substring(space + 1);
+                        space = newSentence.indexOf(" ");
+                        String nextWord = newSentence.substring(0, space);
+                        if (nextWord.contains(".mp4")) {
+                            String nameofFile = nextWord;
+                            newSentence = newSentence.substring(space + 1);
+                            space = newSentence.indexOf(" ");
+                            String likes = newSentence.substring(0, space);
+                            space = newSentence.indexOf(" ");
 
-                    // }
+                            String descrip = newSentence.substring(space + 1);
+                            BinaryTreeNode checkNode = users.UserExists(users, username);
+                            if (checkNode == null) {
+                                System.out.println("\t!Username does not exit and can therefore not add post!");
+
+                            } else {
+                                User temp = users.find(new User(username)).data;
+                                temp.addPost(descrip, nextWord, likes);
+                                System.out.println("\t>Post was created for " + username);
+                            }
+
+                        } else {
+                            String descrip = newSentence.substring(space + 1);
+                            BinaryTreeNode checkNode = users.UserExists(users, username);
+                            if (checkNode == null) {
+                                System.out.println("\t!Username does not exit and can therefore not add post!");
+                            } else {
+                                User temp = users.find(new User(username)).data;
+                                temp.addPost(descrip, nextWord);
+                                System.out.println("\t>Post was created for " + username);
+
+                            }
+                        }
+
+                    } else if (li.substring(0, space).toUpperCase().equals("CREATE")) {
+                        String newSentence = li.substring(space + 1);
+                        space = newSentence.indexOf(" ");
+                        String user_name = newSentence.substring(0, space);
+                        String descript = newSentence.substring(space + 1);
+                        users.insert(new User(user_name, descript));
+                        System.out.println("Account was created for " + user_name);
+                    }
+                    break;
                 default:
                     System.out.println("Invalid input. Please try again.");
                     break;

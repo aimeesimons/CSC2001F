@@ -34,7 +34,7 @@ public class User {
         posts.add(new Post(title, nameofFile));
     }
 
-    public void addPost(String title, String nameofFile, int numLikes) {
+    public void addPost(String title, String nameofFile, String numLikes) {
         posts.add(new Post(title, nameofFile, numLikes));
     }
 

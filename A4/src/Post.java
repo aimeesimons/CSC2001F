@@ -1,27 +1,32 @@
+import java.util.Random;
+
 public class Post {
     String title;
     String nameOfFile;
-    int numLikes;
+    String numLikes;
+    int likes = 100000;
+
+    Random rand = new Random();
 
     public Post() {
         this.title = null;
         this.nameOfFile = null;
-        this.numLikes = 0;
+        this.numLikes = null;
     }
 
     public Post(String title, String nameOfFile) {
         this.title = title;
         this.nameOfFile = nameOfFile;
-        this.numLikes = 0;
+        this.numLikes = Integer.toString(rand.nextInt(likes));
     }
 
     public Post(String title) {
         this.title = title;
         this.nameOfFile = "N/A";
-        this.numLikes = 0;
+        this.numLikes = Integer.toString(rand.nextInt(likes));
     }
 
-    public Post(String title, String nameOfFile, int numLikes) {
+    public Post(String title, String nameOfFile, String numLikes) {
         this.title = title;
         this.nameOfFile = nameOfFile;
         this.numLikes = numLikes;

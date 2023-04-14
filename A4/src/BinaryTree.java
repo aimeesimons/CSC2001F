@@ -32,7 +32,7 @@ public class BinaryTree {
    }
 
    public void visit(BinaryTreeNode node) {
-      System.out.println(node.data.toString());
+      System.out.println("\t" + node.data.toString());
    }
 
    public void preOrder() {
