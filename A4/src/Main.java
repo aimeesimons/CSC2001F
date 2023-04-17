@@ -13,27 +13,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-
-        BinarySearchTree users = new BinarySearchTree();
-        Scanner input = new Scanner(System.in);
-        users.insert(new User("Aimee", "student at UCT"));
-        users.insert(new User("234", "CEO of being cool"));
-        users.insert(new User("Erin", "tall girl"));
-        users.insert(new User("Maxine", "cute girl"));
-        users.insert(new User("MaraJade7", "single and loving it!"));
-        users.insert(new User("DarthMaul6", "CEO of being cool"));
-        users.insert(new User("DashRendar8", "tall girl"));
-        users.insert(new User("Revan9", "cute girl"));
-        users.insert(new User("C-3PO7", "Star Wars fan"));
-        users.insert(new User("Watto8", "student at UCT"));
-        users.insert(new User("KitFisto9", "CEO of being cool"));
-        users.insert(new User("HanSolo7", "Star Wars fan"));
-        users.insert(new User("Obi-WanKenobi3", "Star Wars fan"));
-        users.insert(new User("LukeSkywalker2", "this is not my actual name"));
-        users.insert(new User("AsajjVentress3", "CEO of being cool"));
-        users.insert(new User("SateleShan3", "bye"));
-        users.insert(new User("R2-D28", "hi"));
-        users.insert(new User("DarthBane3", "Star Wars fan"));
+        BinarySearchTree users = new BinarySearchTree();// creating a BinarySearchTree object
+        Scanner input = new Scanner(System.in);// initialising a scanner object
         System.out.println("-----------------------------------------------------------------");
         System.out.println("\t\t # WELCOME TO TOKTIK!! #");
         System.out.println("-----------------------------------------------------------------");
@@ -42,24 +23,25 @@ public class Main {
         System.out.println(
                 "\t1. Find the profile description for a given account\n\t2. List all accounts\n\t3. Create an account\n\t4. Delete an account\n\t5. Display all posts for a single account\n\t6. Add a new post for an account\n\t7. Load a file of actions from disk and process this\n\t8. Quit");
         System.out.println("");
-        System.out.println("Enter your choice:");
+        System.out.println("Enter your choice:");// Prompting the user to input a number
         int choice = input.nextInt();
         System.out.println("");
 
         while (choice != 8) {
-            switch (choice) {
+            switch (choice) {// switch statement
                 case 1:
                     input.nextLine();
                     System.out.println("Enter the account name:");
                     String names = input.next();
-                    boolean search = users.UserExists(users, names);
+                    boolean search = users.UserExists(users, names);// checkong whether the user exists
                     if (search == false) {
-                        System.out.println("Account name does not exist.");
+                        System.out.println("\t>Account name does not exist.");
                         System.out.println("");
 
                     } else {
                         System.out.println("\t>The profile description is: \""
-                                + users.userfound(users, names).data.Description + "\"");
+                                + users.userfound(users, names).data.Description + "\"");// displaying the user
+                                                                                         // description
                         System.out.println("");
                     }
 
@@ -69,7 +51,7 @@ public class Main {
                     System.out.println("\t-------------------------------------");
                     System.out.println("\tLISTING ALL THE ACCOUNTS:");
                     System.out.println("\t-------------------------------------");
-                    users.inOrder();
+                    users.inOrder();// using the inorder function to list the accounts.
                     System.out.println("");
                     break;
                 case 3:
@@ -82,7 +64,7 @@ public class Main {
                         input.nextLine();
                         String description = input.nextLine();
                         User newAccount = new User(Name, description);
-                        users.insert(newAccount);
+                        users.insert(newAccount);// inserting a new User object into the binarySearchtree
                         System.out.println("\t>Account has been created!");
                         System.out.println("");
                     } else {
@@ -116,12 +98,12 @@ public class Main {
                         User temp1 = new User(postsName);
                         temp1 = users.find(temp1).data;
                         Collections.reverse(temp1.posts);
-                        System.out.println("\t-------------------------------------");
-                        System.out.println("\t|LIST OF POSTS FROM " + postsName + "\t      |");
-                        System.out.println("\t-------------------------------------");
+                        System.out.println("\t--------------------------------------------------------------");
+                        System.out.println("\t|LIST OF POSTS FROM " + postsName);
+                        System.out.println("\t--------------------------------------------------------------");
                         for (int i = 0; i < temp1.posts.size(); i++) {
                             System.out.println("\t" + temp1.posts.get(i).toString());
-                            System.out.println("\t-------------------------------------");
+                            System.out.println("\t--------------------------------------------------------------");
                         }
                         System.out.println("");
                     }
@@ -160,53 +142,63 @@ public class Main {
                     break;
 
                 case 7:
-                    String li = Line("dataset.txt");
-                    int space = li.indexOf(" ");
-                    if (li.substring(0, space).toUpperCase().equals("ADD")) {
-                        String newSentence = li.substring(space + 1);
-                        space = newSentence.indexOf(" ");
-                        String username = newSentence.substring(0, space);
-                        newSentence = newSentence.substring(space + 1);
-                        space = newSentence.indexOf(" ");
-                        String nextWord = newSentence.substring(0, space);
-                        if (nextWord.contains(".mp4")) {
-                            String nameofFile = nextWord;
+                    String li = "";
+                    List<String> line = Lines(
+                            "dataset.txt");
+                    for (int i = 0; i < line.size(); i++) {
+                        li = line.get(i);
+                        int space = li.indexOf(" ");
+                        if (li.substring(0, space).toUpperCase().equals("ADD")) {
+                            String newSentence = li.substring(space + 1);
+                            space = newSentence.indexOf(" ");
+                            String username = newSentence.substring(0, space);
                             newSentence = newSentence.substring(space + 1);
                             space = newSentence.indexOf(" ");
-                            String likes = newSentence.substring(0, space);
-                            space = newSentence.indexOf(" ");
+                            String nextWord = newSentence.substring(0, space);
+                            if (nextWord.contains(".mpg")) {
+                                String nameofFile = nextWord;
+                                newSentence = newSentence.substring(space + 1);
+                                space = newSentence.indexOf(" ");
+                                String likes = newSentence.substring(0, space);
+                                space = newSentence.indexOf(" ");
 
-                            String descrip = newSentence.substring(space + 1);
-                            boolean checkNode = users.UserExists(users, username);
-                            if (checkNode == false) {
-                                System.out.println("\t!Username does not exit and can therefore not add post!");
+                                String descrip = newSentence.substring(space + 1);
+                                boolean checkNode = users.UserExists(users, username);
+                                if (checkNode == false) {
+                                    System.out.println("\t!Username does not exit and can therefore not add post!");
+
+                                } else {
+                                    User temp = users.find(new User(username)).data;
+                                    temp.addPost(descrip, nameofFile, likes);
+                                    System.out.println("\t>Post was created for " + username);
+                                }
 
                             } else {
-                                User temp = users.find(new User(username)).data;
-                                temp.addPost(descrip, nextWord, likes);
-                                System.out.println("\t>Post was created for " + username);
+                                String descrip = newSentence.substring(space + 1);
+                                boolean checkNode = users.UserExists(users, username);
+                                if (checkNode == false) {
+                                    System.out.println("\t!Username does not exit and can therefore not add post!");
+                                } else {
+                                    User temp = users.find(new User(username)).data;
+                                    temp.addPost(descrip, nextWord);
+                                    System.out.println("\t>Post was created for " + username);
+
+                                }
                             }
 
-                        } else {
-                            String descrip = newSentence.substring(space + 1);
-                            boolean checkNode = users.UserExists(users, username);
-                            if (checkNode == false) {
-                                System.out.println("\t!Username does not exit and can therefore not add post!");
+                        } else if (li.substring(0, space).toUpperCase().equals("CREATE")) {
+                            String newSentence = li.substring(space + 1);
+                            space = newSentence.indexOf(" ");
+                            String user_name = newSentence.substring(0, space);
+                            boolean checker = users.UserExists(users, user_name);
+                            if (checker == false) {
+                                String descript = newSentence.substring(space + 1);
+                                users.insert(new User(user_name, descript));
+                                System.out.println("\t>Account was created for " + user_name);
                             } else {
-                                User temp = users.find(new User(username)).data;
-                                temp.addPost(descrip, nextWord);
-                                System.out.println("\t>Post was created for " + username);
-
+                                System.out.println("Username already exists. Please input a unique username.");
                             }
                         }
-
-                    } else if (li.substring(0, space).toUpperCase().equals("CREATE")) {
-                        String newSentence = li.substring(space + 1);
-                        space = newSentence.indexOf(" ");
-                        String user_name = newSentence.substring(0, space);
-                        String descript = newSentence.substring(space + 1);
-                        users.insert(new User(user_name, descript));
-                        System.out.println("Account was created for " + user_name);
                     }
                     break;
                 default:
@@ -226,9 +218,17 @@ public class Main {
         System.out.println("-----------------------------------------------------------------");
         System.out.println("\t\t # THANK YOU FOR USING TOKTIK!! #");
         System.out.println("-----------------------------------------------------------------");
+        input.close();
     }
 
-    private static String Line(String route) {
+    /**
+     * This method takes in the path of a file. It then reads all the lines in the
+     * file and saves them in a list.
+     * 
+     * @param route ,which is the relative path of the textfile
+     * @return the lines in the textfile as a list
+     */
+    private static List<String> Lines(String route) {
         List<String> l;
         try {
             l = Files.readAllLines(Paths.get(route));
@@ -236,8 +236,7 @@ public class Main {
             e.printStackTrace();
             return null;
         }
-        Random random = new Random();
-        return l.get(random.nextInt(l.size()));
+        return l;
     }
 
 }

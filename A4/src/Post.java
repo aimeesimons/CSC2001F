@@ -72,11 +72,11 @@ public class Post {
      */
     public String toString() {
         String bunny = "(\\(\\\n";
-        bunny = bunny + "\t\t( . .)\n";
-        bunny = bunny + "\t|\to_(\")(\")\t\t\t|\n\t";
-        String x = "|Comment: " + this.title + "\n";
-        x = x + "\t|\t" + bunny + "|Video: " + this.nameOfFile + "\t|\n";
-        x = x + "\t|" + "Number of Likes: " + this.numLikes + "\t|";
+        bunny = bunny + "\t|\t( . .)\n";
+        bunny = bunny + "\t|\to_(\")(\")\n\t";
+        String x = "|Comment:\"" + this.title + "\"\n";
+        x = x + "\t|\t" + bunny + "|Video: " + this.nameOfFile + "\n";
+        x = x + "\t|" + "Number of Likes: " + this.numLikes;
 
         return x;
     }
