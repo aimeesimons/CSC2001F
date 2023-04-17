@@ -17,6 +17,6 @@ CLASSES=Post.class User.class BinaryTreeNode.class BinaryTree.class BinarySearch
 CLASS_FILES=$(CLASSES:%.class=$(BINDIR)/%.class)
 default: $(CLASS_FILES)
 clean:
-	rm $(BINDIR)/*.class
+	rm $(BINDIR)/*.class 
 run: $(CLASS_FILES)
 	java -cp bin Main

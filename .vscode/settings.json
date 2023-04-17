@@ -1,3 +1,5 @@
 {
-    "java.debug.settings.onBuildFailureProceed": true
+    "java.debug.settings.onBuildFailureProceed": true,
+    "javadoc-tools.generateJavadoc.workspaceSourceFolder": "C:\\Users\\Aimee Simons\\Desktop\\2023\\Lectures\\Semester 1\\CSC2001F\\Assignments\\CSC2001F_A4\\A4\\src",
+    "javadoc-tools.generateJavadoc.targetFolder": "C:\\Users\\Aimee Simons\\Desktop\\2023\\Lectures\\Semester 1\\CSC2001F\\Assignments\\CSC2001F_A4\\A4\\doc"
 }
