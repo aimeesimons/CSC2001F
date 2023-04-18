@@ -128,13 +128,15 @@ public class Main {
                             System.out.println("Enter a Title");
                             input.nextLine();
                             String descrip = input.nextLine();
-                            temp2.posts.add(new Post(descrip, vid));
+                            temp2.posts.add(new Post(descrip, vid));// Addinging a new post
+                            System.out.println("\t>Post was created for " + postName);
                             System.out.println("");
                         } else {
                             System.out.println("Enter a comment");
                             input.nextLine();
                             String com = input.nextLine();
-                            temp2.posts.add(new Post(com));
+                            temp2.posts.add(new Post(com));// Adding a new post
+                            System.out.println("\t>Post was created for " + postName);
                             System.out.println("");
                         }
                     }
@@ -231,7 +233,7 @@ public class Main {
     private static List<String> Lines(String route) {
         List<String> l;
         try {
-            l = Files.readAllLines(Paths.get(route));
+            l = Files.readAllLines(Paths.get(route));// reading all the lines in the file
         } catch (IOException e) {
             e.printStackTrace();
             return null;

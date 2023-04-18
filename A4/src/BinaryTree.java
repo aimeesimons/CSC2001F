@@ -3,7 +3,6 @@
  */
 public class BinaryTree {
    BinaryTreeNode root;// creating the root node
-   int count = 0;
 
    /**
     * This constructor of BinaryTree initialises the root node as being null.
@@ -130,8 +129,6 @@ public class BinaryTree {
       if (node != null) {
          inOrder(node.getLeft());
          visit(node);
-         count += 1;
-
          inOrder(node.getRight());
       }
    }
